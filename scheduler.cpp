@@ -1,10 +1,11 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include "scheduler.hpp"
 
 // Updated based on Milestone 5
-bool load_schedule(std::string file_name, CourseSchedule & course_sched)
+bool load_schedule(std::string file_name)
 {
   // define variables
   const int MAX_MINUTE = 59;
@@ -112,9 +113,10 @@ bool load_schedule(std::string file_name, CourseSchedule & course_sched)
       // convert the start and end times
       start_time = (start_hour * 100) + start_minute;
       end_time = (end_hour * 100) + end_minute;
-      dynamically allocate memory set each value of the array with corresponding
-          value course_sched.add(course_name, location, day_of_week, start_time,
-                                 end_time);
+      // dynamically allocate memory set each value of the array with
+      // corresponding value
+      complete_schedule_.add(course_name, location, day_of_week, start_time,
+                             end_time);
       // move file pointer to the next line after having read an int
       in_file.ignore();
     }
@@ -122,4 +124,22 @@ bool load_schedule(std::string file_name, CourseSchedule & course_sched)
   }
   std::cout << (valid_format ? "Valid" : "Invalid") << " file.\n";
   return valid_format;
+}
+
+CourseSchedule * best_schedule(std::string file_name)
+{
+  if(!load_schedule(file_name))
+  {
+    return nullptr;
+  }
+  else
+  {
+    Course * arr[];
+    for (int i = 0, i < complete_schedule_->num_courses();i++)
+    {
+      arr[i] = complete_schedule_->course();
+    }
+  }
+
+
 }

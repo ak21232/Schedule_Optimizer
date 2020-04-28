@@ -239,7 +239,25 @@ public:
         return false;
       }
     }
+    else if (!remove_conflicts_)
+    {
+      courses_[num_courses_] = new Course;
+      (*(courses_ + num_courses_))->set_course_name(course_name);
+      (*(courses_ + num_courses_))->set_location(course_location);
+      (*(courses_ + num_courses_))->set_weekly_schedule(day);
+      (*(courses_ + num_courses_))->set_time(TimeSpan(start_time, end_time));
+      num_courses_++;
+      return true;
+    }
 
+  }
+  bool add(Course * cptr)
+  {
+    cptr.add(cptr->course_name(), cptr->location(), cptr->weekly_schedule(),cptr->time().start_time(),cptr->time().end_time());
+  }
+  Course * course(int array_element)
+  {
+    return courses_array_[array_element + 1];
   }
   void display()
   {
@@ -257,5 +275,17 @@ public:
   }
 };
 
+// Milestone 6 Schedule Manager
+class ScheduleManager
+{
+private:
+  CourseSchedule complete_schedule_;
+  CourseSchedule best_schedule_;
+  bool load_schedule(std::string file_name);
+public:
+  ScheduleManager() : complete_schedule_(CourseSchedule(false)), best_schedule_(nullptr) {}
+  CourseSchedule * best_schedule(std::string file_name);
+}
+
+
 // Updated class based on Milestone 5
-bool load_schedule(std::string file_name, CourseSchedule & course_sched);
