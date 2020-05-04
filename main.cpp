@@ -11,16 +11,16 @@ int main()
   std::string file_name;
   std::string display;
   // Updated based on Milestone 5
-  CourseSchedule course_sched;
+  CourseSchedule * course_sched;
+  ScheduleManager sched_manager;
 
   std::cout << "Welcome to Tuffy Scheduler!\n";
   std::cout << "Please enter the file name containing the list of classes: ";
   std::cin >> file_name;
-  // Updated based on Milestone 5
-  valid_format = load_schedule(file_name, course_sched);
-  if (valid_format)
+  course_sched = sched_manager.best_schedule(file_name);
+  if (course_sched != nullptr)
   {
-    std::cout << "Schedule file loaded. Displaying contents ...\n";
+    std::cout << "The schedule below accommodates the most number of courses without conflicts from the file you provided:\n";
     // Updated based on Milestone 5
     course_sched.display();
   }

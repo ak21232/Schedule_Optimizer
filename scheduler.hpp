@@ -285,6 +285,13 @@ private:
 public:
   ScheduleManager() : complete_schedule_(CourseSchedule(false)), best_schedule_(nullptr) {}
   CourseSchedule * best_schedule(std::string file_name);
+  ~CourseSchedule()
+  {
+    if (best_schedule_ != nullptr)
+    {
+      delete best_schedule_;
+    }
+  }
 }
 
 

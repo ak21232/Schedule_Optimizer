@@ -135,10 +135,18 @@ CourseSchedule * best_schedule(std::string file_name)
   else
   {
     Course * arr[];
-    for (int i = 0, i < complete_schedule_->num_courses();i++)
+    for (int i = 0; i < complete_schedule_->num_courses();i++)
     {
-      arr[i] = complete_schedule_->course();
+      arr[i] = complete_schedule_->course(i);
+      std::next_permutation(i,complete_schedule_->num_courses());
+      CourseSchedule obj[];
+      obj[i].add(arr[i]);
+      if (obj[0].num_courses() < obj[i].num_courses())
+      {
+        best_schedule_ = obj[i];
+      }
     }
+    return best_schedule_;
   }
 
 
