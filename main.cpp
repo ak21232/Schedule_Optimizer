@@ -22,7 +22,7 @@ int main()
   {
     std::cout << "The schedule below accommodates the most number of courses without conflicts from the file you provided:\n";
     // Updated based on Milestone 5
-    course_sched.display();
+    course_sched->display();
   }
   else
   {

@@ -221,6 +221,7 @@ public:
   bool add(std::string course_name, std::string course_location,
            std::string day, int start_time, int end_time)
   {
+    bool valid = false;
     if (remove_conflicts_)
     {
       courses_[num_courses_] = new Course;
@@ -231,12 +232,12 @@ public:
       if (!(has_conflict(*(courses_ + num_courses_))))
       {
         num_courses_++;
-        return true;
+        valid = true;
       }
       else
       {
         delete courses_[num_courses_];
-        return false;
+        valid = false;
       }
     }
     else if (!remove_conflicts_)
@@ -247,17 +248,18 @@ public:
       (*(courses_ + num_courses_))->set_weekly_schedule(day);
       (*(courses_ + num_courses_))->set_time(TimeSpan(start_time, end_time));
       num_courses_++;
-      return true;
+      valid = true;
     }
-
+    return valid;
   }
   bool add(Course * cptr)
   {
-    cptr.add(cptr->course_name(), cptr->location(), cptr->weekly_schedule(),cptr->time().start_time(),cptr->time().end_time());
+    CourseSchedule sched;
+    return sched.add((*cptr).course_name(), (*cptr).location(), (*cptr).weekly_schedule(),(*cptr).time().start_time(),(*cptr).time().end_time());
   }
   Course * course(int array_element)
   {
-    return courses_array_[array_element + 1];
+    return courses_[array_element + 1];
   }
   void display()
   {
@@ -280,19 +282,19 @@ class ScheduleManager
 {
 private:
   CourseSchedule complete_schedule_;
-  CourseSchedule best_schedule_;
+  CourseSchedule * best_schedule_;
   bool load_schedule(std::string file_name);
 public:
   ScheduleManager() : complete_schedule_(CourseSchedule(false)), best_schedule_(nullptr) {}
   CourseSchedule * best_schedule(std::string file_name);
-  ~CourseSchedule()
+  ~ScheduleManager()
   {
-    if (best_schedule_ != nullptr)
+    if (best_schedule_!= nullptr)
     {
       delete best_schedule_;
     }
   }
-}
+};
 
 
 // Updated class based on Milestone 5
