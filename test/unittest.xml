@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="86" failures="1" disabled="0" errors="0" time="0.011" timestamp="2020-05-06T21:28:01" name="AllTests">
+  <testsuite name="TimeSpan" tests="21" failures="0" disabled="0" errors="0" time="0.001" timestamp="2020-05-06T21:28:01">
+    <testcase name="DefaultConstructor" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="NonDefaultConstructor1" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="NonDefaultConstructor2" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="Display1" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="Display2" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="StartTimeAccessorMutator" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="EndTimeAccessorMutator" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorLTTrue" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorLTEdgeTrue" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorLTEdgeFalse" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorLTEndIntersectFalse" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorLTStartEndIntersectFalse" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorLTStartIntersectFalse" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorLTStartEndOverFalse" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorGTTrue" status="run" result="completed" time="0.001" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorGTEdgeTrue" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorGTEdgeFalse" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorGTStartIntersectFalse" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorGTStartEndIntersectFalse" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorGTEndIntersectFalse" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+    <testcase name="OperatorGTStartEndOverFalse" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="TimeSpan" />
+  </testsuite>
+  <testsuite name="Course" tests="8" failures="0" disabled="0" errors="0" time="0" timestamp="2020-05-06T21:28:01">
+    <testcase name="DefaultConstructor" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="Course" />
+    <testcase name="NonDefaultConstructor1" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="Course" />
+    <testcase name="NonDefaultConstructor2" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="Course" />
+    <testcase name="CourseNameAccessorMutator" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="Course" />
+    <testcase name="LocationAccessorMutator" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="Course" />
+    <testcase name="WeeklyScheduleAccessorMutator" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="Course" />
+    <testcase name="TimeAccessorMutator" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="Course" />
+    <testcase name="Display" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="Course" />
+  </testsuite>
+  <testsuite name="CoursePointer" tests="5" failures="1" disabled="0" errors="0" time="0.001" timestamp="2020-05-06T21:28:01">
+    <testcase name="IntersectsDifferentDayTimeIntersect" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="CoursePointer" />
+    <testcase name="IntersectsDifferentDayNoTimeIntersect" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="CoursePointer" />
+    <testcase name="IntersectsSameDayTimeIntersect1" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="CoursePointer" />
+    <testcase name="IntersectsSameDayTimeIntersect2" status="run" result="completed" time="0" timestamp="2020-05-06T21:28:01" classname="CoursePointer">
+      <failure message="test/unittest.cpp:358&#x0A;Value of: first_course-&gt;intersects(second_course)&#x0A;  Actual: false&#x0A;Expected: true&#x0A;The first course (MW 8:30 - 9:20) intersects with the second course (W 9:00-10:00)" type=""><![CDATA[test/unittest.cpp:358
+Value of: first_course->intersects(second_course)
+  Actual: false
+Expected: true
+The first course (MW 8:30 - 9:20) intersects with the second course (W 9:00-10:00)]]></failure>
+    </testcase>
+    <testcase name="IntersectsSameDayTimeIntersect3" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CoursePointer" />
+  </testsuite>
+  <testsuite name="CourseSchedule" tests="17" failures="0" disabled="0" errors="0" time="0.001" timestamp="2020-05-06T21:28:01">
+    <testcase name="DefaultConstructorAccessor" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="NonDefaultConstructorAccessor" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="DisplayOneCourse" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="DisplayMultiCourse" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="AddDisplay_OneElemNoConflict" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="DefaultConstructor_RemoveConflictsTrue" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="NonDefaultConstructor_RemoveConflictsTrue" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="NonDefaultConstructor_RemoveConflictsFalse" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="AddDisplay_OneElemConflict" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="AddDisplay_NoConflict" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="AddDisplay_OneConflictFront" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="AddDisplay_OneConflictMid" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="AddDisplay_OneConflictLast" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="AddDisplay_MultiConflict" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="AddDisplay_MultiConflict_RemoveConflictsFalse" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="RetrieveFirstCourse" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+    <testcase name="RetrieveThirdCourse" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseSchedule" />
+  </testsuite>
+  <testsuite name="CourseScheduleWithPointers" tests="2" failures="0" disabled="0" errors="0" time="0" timestamp="2020-05-06T21:28:01">
+    <testcase name="AddOverloadDisplayHasConflict" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseScheduleWithPointers" />
+    <testcase name="AddOverloadDisplayNoConflict" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="CourseScheduleWithPointers" />
+  </testsuite>
+  <testsuite name="ScheduleManager_" tests="33" failures="0" disabled="0" errors="0" time="0.007" timestamp="2020-05-06T21:28:01">
+    <testcase name="DefaultConstructor" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="FileDoesntExist" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="NoLocation" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="NoWeeklySchedule" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="InvalidDay1" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="InvalidDay2" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="NoStartTime1" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="NoStartTime2" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="NoEndTime1" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="NoEndTime2" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="InvalidStartTime1" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="InvalidStartTime2" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="InvalidEndTime1" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="InvalidEndTime2" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="StartLaterThanEnd" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedNoLocation" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedNoWeeklySchedule" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedInvalidDay1" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedInvalidDay2" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedNoStartTime1" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedNoStartTime2" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedNoEndTime1" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedNoEndTime2" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedInvalidStartTime1" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedInvalidStartTime2" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedInvalidEndTime1" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedInvalidEndTime2" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="MultSchedStartLaterThanEnd" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="BestScheduleOneCourse" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="BestScheduleNoConflict" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="BestScheduleConflictFirst" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="BestScheduleConflictMid" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+    <testcase name="BestScheduleConflictLast" status="run" result="skipped" time="0" timestamp="2020-05-06T21:28:01" classname="ScheduleManager_" />
+  </testsuite>
+</testsuites>

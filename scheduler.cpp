@@ -5,7 +5,7 @@
 #include "scheduler.hpp"
 
 // Updated based on Milestone 5
-bool load_schedule(std::string file_name)
+bool ScheduleManager::load_schedule(std::string file_name)
 {
   // define variables
   const int MAX_MINUTE = 59;
@@ -126,28 +126,39 @@ bool load_schedule(std::string file_name)
   return valid_format;
 }
 
-CourseSchedule * best_schedule(std::string file_name)
+CourseSchedule * ScheduleManager:: best_schedule(std::string file_name)
 {
-  if(!load_schedule(file_name))
+  int number_of_courses = complete_schedule_.num_courses();
+  bool loaded = load_schedule(file_name);
+  if(!loaded)
   {
     return nullptr;
   }
   else
   {
-    Course * arr[];
-    for (int i = 0; i < complete_schedule_->num_courses();i++)
+    Course * arr[number_of_courses];
+    for (int i = 0; i < number_of_courses;i++)
     {
-      arr[i] = complete_schedule_->course(i);
-      std::next_permutation(i,complete_schedule_->num_courses());
-      CourseSchedule obj[];
-      obj[i].add(arr[i]);
-      if (obj[0].num_courses() < obj[i].num_courses())
+      arr[i] = complete_schedule_.course(i);
+    }
+      do
       {
-        best_schedule_ = obj[i];
-      }
+        CourseSchedule * obj = new CourseSchedule;
+        for (int k = 0; k < number_of_courses;k++)
+        {
+          obj->add(arr[k]);
+        }
+        if (best_schedule_->num_courses() < obj->num_courses())
+        {
+          delete best_schedule_;
+          best_schedule_ = obj;
+        }
+        else
+        {
+          delete obj;
+          obj = nullptr;
+        }
+      } while(std::next_permutation(arr,arr + number_of_courses));
     }
     return best_schedule_;
-  }
-
-
 }
