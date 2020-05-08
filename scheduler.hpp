@@ -180,13 +180,19 @@ public:
     bool intersects = false;
     if ((time_.start_time() <= course->time().start_time()) &&
         (course->time().start_time() <= time_.end_time()) &&
-        (course->weekly_schedule() == weekly_schedule_))
+        (weekly_schedule_.find(course->weekly_schedule()) != std::string::npos))
     {
       intersects = true;
     }
     else if ((time_.start_time() <= course->time().end_time()) &&
              (course->time().end_time() <= time_.end_time()) &&
-             (course->weekly_schedule() == weekly_schedule_))
+             (weekly_schedule_.find(course->weekly_schedule()) != std::string::npos))
+    {
+      intersects = true;
+    }
+    else if ((time_.start_time() <= course->time().end_time()) &&
+             (course->time().end_time() <= time_.end_time()) &&
+             (weekly_schedule_.find('h') == course->weekly_schedule().find('h')))
     {
       intersects = true;
     }
@@ -203,7 +209,7 @@ private:
   bool has_conflict(Course * course)
   {
     bool conflict = false;
-    for (int i = 0; i < num_courses_; i++)
+    for (int i = 1; i < num_courses_ + 1; i++)
     {
       if ((*(courses_ + i))->intersects(course))
       {
@@ -215,38 +221,40 @@ private:
   bool remove_conflicts_;
 
 public:
-  CourseSchedule() : CourseSchedule(true) {}
   CourseSchedule(bool remove_conflicts) :remove_conflicts_(remove_conflicts), num_courses_(0) {}
+  CourseSchedule() : CourseSchedule(true) {}
   int num_courses() { return num_courses_; }
   bool add(std::string course_name, std::string course_location,
            std::string day, int start_time, int end_time)
   {
+    int course_index = num_courses_ + 1;
     bool valid = false;
     if (remove_conflicts_)
     {
-      courses_[num_courses_] = new Course;
-      (*(courses_ + num_courses_))->set_course_name(course_name);
-      (*(courses_ + num_courses_))->set_location(course_location);
-      (*(courses_ + num_courses_))->set_weekly_schedule(day);
-      (*(courses_ + num_courses_))->set_time(TimeSpan(start_time, end_time));
-      if (!(has_conflict(*(courses_ + num_courses_))))
+      courses_[course_index] = new Course;
+      (*(courses_ + course_index))->set_course_name(course_name);
+      (*(courses_ + course_index))->set_location(course_location);
+      (*(courses_ + course_index))->set_weekly_schedule(day);
+      (*(courses_ + course_index))->set_time(TimeSpan(start_time, end_time));
+      if (!(has_conflict(*(courses_ + course_index))))
       {
         num_courses_++;
         valid = true;
       }
       else
       {
-        delete courses_[num_courses_];
+        delete courses_[course_index];
+        courses_[course_index] = nullptr;
         valid = false;
       }
     }
     else if (!remove_conflicts_)
     {
-      courses_[num_courses_] = new Course;
-      (*(courses_ + num_courses_))->set_course_name(course_name);
-      (*(courses_ + num_courses_))->set_location(course_location);
-      (*(courses_ + num_courses_))->set_weekly_schedule(day);
-      (*(courses_ + num_courses_))->set_time(TimeSpan(start_time, end_time));
+      courses_[course_index] = new Course;
+      (*(courses_ + course_index))->set_course_name(course_name);
+      (*(courses_ + course_index))->set_location(course_location);
+      (*(courses_ + course_index))->set_weekly_schedule(day);
+      (*(courses_ + course_index))->set_time(TimeSpan(start_time, end_time));
       num_courses_++;
       valid = true;
     }
@@ -255,7 +263,9 @@ public:
   bool add(Course * cptr)
   {
     CourseSchedule sched;
-    return sched.add((*cptr).course_name(), (*cptr).location(), (*cptr).weekly_schedule(),(*cptr).time().start_time(),(*cptr).time().end_time());
+    bool check;
+    check = sched.add((cptr)->course_name(), (cptr)->location(), (cptr)->weekly_schedule(),(cptr)->time().start_time(),(cptr)->time().end_time());
+    return check;
   }
   Course * course(int array_element)
   {
@@ -263,16 +273,20 @@ public:
   }
   void display()
   {
-    for (int i = 0; i < num_courses_; i++)
+    if ((*(courses_)) != nullptr)
     {
-      courses_[i]->display();
+      for (int i = 1; i < num_courses_ + 1; i++)
+      {
+        ((*(courses_ + i)))->display();
+      }
     }
   }
   ~CourseSchedule()
   {
-    for (int i = 0; i < num_courses_; i++)
+    for (int i = 1; i < num_courses_ + 1; i++)
     {
       delete courses_[i];
+      courses_[i] = nullptr;
     }
   }
 };
