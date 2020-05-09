@@ -20,7 +20,8 @@ int main()
   course_sched = sched_manager.best_schedule(file_name);
   if (course_sched != nullptr)
   {
-    std::cout << "The schedule below accommodates the most number of courses without conflicts from the file you provided:\n";
+    std::cout << "The schedule below accommodates the most number of courses "
+                 "without conflicts from the file you provided:\n";
     course_sched->display();
   }
   else

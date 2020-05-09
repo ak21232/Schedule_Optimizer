@@ -17,9 +17,9 @@ public:
   }
   void set_start_time(int start_time) { start_time_ = start_time; }
   void set_end_time(int end_time) { end_time_ = end_time; }
-  int start_time() { return start_time_; }
-  int end_time() { return end_time_; }
-  bool operator<(TimeSpan right)
+  int start_time() const { return start_time_; }
+  int end_time() const { return end_time_; }
+  bool operator<(const TimeSpan & right) const
   {
     if (end_time_ < right.start_time())
     {
@@ -30,7 +30,7 @@ public:
       return false;
     };
   }
-  bool operator>(TimeSpan right)
+  bool operator>(const TimeSpan & right) const
   {
     if (start_time_ > right.end_time())
     {
@@ -175,28 +175,33 @@ public:
     };
   }
 
-  bool intersects(Course * course)
+  bool intersects(Course * other) const
   {
-    bool intersects = false;
-    if ((time_.start_time() <= course->time().start_time()) &&
-        (course->time().start_time() <= time_.end_time()) &&
-        (weekly_schedule_.find(course->weekly_schedule()) != std::string::npos))
+    bool overlap = false;
+
+    // check whether the two courses have a day in common
+    // e.g. MW course and W course have W in common
+    for (char ch1 : weekly_schedule_)
     {
-      intersects = true;
+      for (char ch2 : other->weekly_schedule())
+      {
+        if (ch1 == ch2)
+        {
+          overlap = true;
+          break;
+        }
+      }
     }
-    else if ((time_.start_time() <= course->time().end_time()) &&
-             (course->time().end_time() <= time_.end_time()) &&
-             (weekly_schedule_.find(course->weekly_schedule()) != std::string::npos))
+    // if the courses are have a day in common, check whether their times
+    // overlap
+    if (overlap)
     {
-      intersects = true;
+      if (time_ < other->time() || time_ > other->time())
+      {
+        overlap = false;
+      }
     }
-    else if ((time_.start_time() <= course->time().end_time()) &&
-             (course->time().end_time() <= time_.end_time()) &&
-             (weekly_schedule_.find('h') == course->weekly_schedule().find('h')))
-    {
-      intersects = true;
-    }
-    return intersects;
+    return overlap;
   }
 };
 
@@ -209,7 +214,7 @@ private:
   bool has_conflict(Course * course)
   {
     bool conflict = false;
-    for (int i = 1; i < num_courses_ + 1; i++)
+    for (int i = 0; i < num_courses_; i++)
     {
       if ((*(courses_ + i))->intersects(course))
       {
@@ -221,61 +226,49 @@ private:
   bool remove_conflicts_;
 
 public:
-  CourseSchedule(bool remove_conflicts) :remove_conflicts_(remove_conflicts), num_courses_(0) {}
+  CourseSchedule(bool remove_conflicts)
+      : remove_conflicts_(remove_conflicts), num_courses_(0)
+  {
+  }
   CourseSchedule() : CourseSchedule(true) {}
   int num_courses() { return num_courses_; }
   bool add(std::string course_name, std::string course_location,
            std::string day, int start_time, int end_time)
   {
-    int course_index = num_courses_ + 1;
     bool valid = false;
-    if (remove_conflicts_)
+
+    courses_[num_courses_] = new Course;
+    (*(courses_ + num_courses_))->set_course_name(course_name);
+    (*(courses_ + num_courses_))->set_location(course_location);
+    (*(courses_ + num_courses_))->set_weekly_schedule(day);
+    (*(courses_ + num_courses_))->set_time(TimeSpan(start_time, end_time));
+    if (!remove_conflicts_ || !(has_conflict(*(courses_ + num_courses_))))
     {
-      courses_[course_index] = new Course;
-      (*(courses_ + course_index))->set_course_name(course_name);
-      (*(courses_ + course_index))->set_location(course_location);
-      (*(courses_ + course_index))->set_weekly_schedule(day);
-      (*(courses_ + course_index))->set_time(TimeSpan(start_time, end_time));
-      if (!(has_conflict(*(courses_ + course_index))))
-      {
-        num_courses_++;
-        valid = true;
-      }
-      else
-      {
-        delete courses_[course_index];
-        courses_[course_index] = nullptr;
-        valid = false;
-      }
-    }
-    else if (!remove_conflicts_)
-    {
-      courses_[course_index] = new Course;
-      (*(courses_ + course_index))->set_course_name(course_name);
-      (*(courses_ + course_index))->set_location(course_location);
-      (*(courses_ + course_index))->set_weekly_schedule(day);
-      (*(courses_ + course_index))->set_time(TimeSpan(start_time, end_time));
       num_courses_++;
       valid = true;
+    }
+    else
+    {
+      delete courses_[num_courses_];
+      courses_[num_courses_] = nullptr;
+      valid = false;
     }
     return valid;
   }
   bool add(Course * cptr)
   {
-    CourseSchedule sched;
     bool check;
-    check = sched.add((cptr)->course_name(), (cptr)->location(), (cptr)->weekly_schedule(),(cptr)->time().start_time(),(cptr)->time().end_time());
+    check = add((cptr)->course_name(), (cptr)->location(),
+                (cptr)->weekly_schedule(), (cptr)->time().start_time(),
+                (cptr)->time().end_time());
     return check;
   }
-  Course * course(int array_element)
-  {
-    return courses_[array_element + 1];
-  }
+  Course * course(int array_element) { return courses_[array_element]; }
   void display()
   {
     if ((*(courses_)) != nullptr)
     {
-      for (int i = 1; i < num_courses_ + 1; i++)
+      for (int i = 0; i < num_courses_; i++)
       {
         ((*(courses_ + i)))->display();
       }
@@ -283,10 +276,9 @@ public:
   }
   ~CourseSchedule()
   {
-    for (int i = 1; i < num_courses_ + 1; i++)
+    for (int i = 0; i < num_courses_; i++)
     {
       delete courses_[i];
-      courses_[i] = nullptr;
     }
   }
 };
@@ -298,12 +290,13 @@ private:
   CourseSchedule complete_schedule_;
   CourseSchedule * best_schedule_;
   bool load_schedule(std::string file_name);
+
 public:
-  ScheduleManager() : complete_schedule_(CourseSchedule(false)), best_schedule_(nullptr) {}
+  ScheduleManager() : complete_schedule_(false), best_schedule_(nullptr) {}
   CourseSchedule * best_schedule(std::string file_name);
   ~ScheduleManager()
   {
-    if (best_schedule_!= nullptr)
+    if (best_schedule_ != nullptr)
     {
       delete best_schedule_;
     }

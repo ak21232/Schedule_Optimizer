@@ -117,6 +117,7 @@ bool ScheduleManager::load_schedule(std::string file_name)
       // corresponding value
       complete_schedule_.add(course_name, location, day_of_week, start_time,
                              end_time);
+
       // move file pointer to the next line after having read an int
       in_file.ignore();
     }
@@ -126,39 +127,46 @@ bool ScheduleManager::load_schedule(std::string file_name)
   return valid_format;
 }
 
-CourseSchedule * ScheduleManager:: best_schedule(std::string file_name)
+CourseSchedule * ScheduleManager::best_schedule(std::string file_name)
 {
-  int number_of_courses = complete_schedule_.num_courses();
   bool loaded = load_schedule(file_name);
-  if(!loaded)
+  if (!loaded)
   {
     return nullptr;
   }
   else
   {
+    int number_of_courses = complete_schedule_.num_courses();
+    ;
     Course * arr[number_of_courses];
-    for (int i = 0; i < number_of_courses;i++)
+    int track = 0;
+    if (best_schedule_ != nullptr)
+    {
+      track = best_schedule_->num_courses();
+    }
+    for (int i = 0; i < number_of_courses; i++)
     {
       arr[i] = complete_schedule_.course(i);
     }
-      do
+    do
+    {
+      CourseSchedule * obj = new CourseSchedule;
+      for (int k = 0; k < number_of_courses; k++)
       {
-        CourseSchedule * obj = new CourseSchedule;
-        for (int k = 0; k < number_of_courses;k++)
-        {
-          obj->add(arr[k]);
-        }
-        if (best_schedule_->num_courses() < obj->num_courses())
-        {
-          delete best_schedule_;
-          best_schedule_ = obj;
-        }
-        else
-        {
-          delete obj;
-          obj = nullptr;
-        }
-      } while(std::next_permutation(arr,arr + number_of_courses));
-    }
-    return best_schedule_;
+        obj->add(arr[k]);
+      }
+      if (track < obj->num_courses())
+      {
+        track = obj->num_courses();
+        delete best_schedule_;
+        best_schedule_ = obj;
+      }
+      else
+      {
+        delete obj;
+        obj = nullptr;
+      }
+    } while (std::next_permutation(arr, arr + number_of_courses));
+  }
+  return best_schedule_;
 }
