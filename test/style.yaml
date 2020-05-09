@@ -1,0 +1,823 @@
+---
+MainSourceFile:  '/home/student/project06-ak21232/scheduler.cpp'
+Diagnostics:     
+  - DiagnosticName:  cppcoreguidelines-non-private-member-variables-in-classes
+    Message:         'member variable ''start_time_'' has protected visibility'
+    FileOffset:      112
+    FilePath:        './scheduler.hpp'
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-non-private-member-variables-in-classes
+    Message:         'member variable ''end_time_'' has protected visibility'
+    FileOffset:      131
+    FilePath:        './scheduler.hpp'
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-non-private-member-variables-in-classes
+    Message:         'member variable ''course_name_'' has protected visibility'
+    FileOffset:      725
+    FilePath:        './scheduler.hpp'
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-non-private-member-variables-in-classes
+    Message:         'member variable ''location_'' has protected visibility'
+    FileOffset:      753
+    FilePath:        './scheduler.hpp'
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-non-private-member-variables-in-classes
+    Message:         'member variable ''weekly_schedule_'' has protected visibility'
+    FileOffset:      778
+    FilePath:        './scheduler.hpp'
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-non-private-member-variables-in-classes
+    Message:         'member variable ''time_'' has protected visibility'
+    FileOffset:      808
+    FilePath:        './scheduler.hpp'
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-non-private-member-variables-in-classes
+    Message:         'member variable ''start_hour_'' has protected visibility'
+    FileOffset:      821
+    FilePath:        './scheduler.hpp'
+    Replacements:    []
+  - DiagnosticName:  misc-non-private-member-variables-in-classes
+    Message:         'member variable ''start_minute_'' has protected visibility'
+    FileOffset:      840
+    FilePath:        './scheduler.hpp'
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-non-private-member-variables-in-classes
+    Message:         'member variable ''end_hour_'' has protected visibility'
+    FileOffset:      861
+    FilePath:        './scheduler.hpp'
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-non-private-member-variables-in-classes
+    Message:         'member variable ''end_minute_'' has protected visibility'
+    FileOffset:      878
+    FilePath:        './scheduler.hpp'
+    Replacements:    []
+  - DiagnosticName:  readability-redundant-member-init
+    Message:         'initializer for member ''time_'' is redundant'
+    FileOffset:      974
+    FilePath:        './scheduler.hpp'
+    Replacements:    
+      - FilePath:        './scheduler.hpp'
+        Offset:          974
+        Length:          17
+        ReplacementText: ''
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''course_name'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      1138
+    FilePath:        './scheduler.hpp'
+    Replacements:    
+      - FilePath:        './scheduler.hpp'
+        Offset:          39
+        Length:          0
+        ReplacementText: '#include <utility>
+'
+      - FilePath:        './scheduler.hpp'
+        Offset:          1138
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        './scheduler.hpp'
+        Offset:          1149
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''location'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      1167
+    FilePath:        './scheduler.hpp'
+    Replacements:    
+      - FilePath:        './scheduler.hpp'
+        Offset:          1167
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        './scheduler.hpp'
+        Offset:          1175
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''weekly_schedule'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      1200
+    FilePath:        './scheduler.hpp'
+    Replacements:    
+      - FilePath:        './scheduler.hpp'
+        Offset:          1200
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        './scheduler.hpp'
+        Offset:          1215
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''course_name'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      1309
+    FilePath:        './scheduler.hpp'
+    Replacements:    
+      - FilePath:        './scheduler.hpp'
+        Offset:          1309
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        './scheduler.hpp'
+        Offset:          1320
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''location'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      1380
+    FilePath:        './scheduler.hpp'
+    Replacements:    
+      - FilePath:        './scheduler.hpp'
+        Offset:          1380
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        './scheduler.hpp'
+        Offset:          1388
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''weekly_schedule'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      1475
+    FilePath:        './scheduler.hpp'
+    Replacements:    
+      - FilePath:        './scheduler.hpp'
+        Offset:          1475
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        './scheduler.hpp'
+        Offset:          1490
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  readability-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1859
+    FilePath:        './scheduler.hpp'
+    Replacements:    []
+  - DiagnosticName:  readability-delete-null-pointer
+    Message:         '''if'' statement is unnecessary; deleting null pointer has no effect'
+    FileOffset:      3249
+    FilePath:        './scheduler.hpp'
+    Replacements:    
+      - FilePath:        './scheduler.hpp'
+        Offset:          3249
+        Length:          30
+        ReplacementText: ''
+      - FilePath:        './scheduler.hpp'
+        Offset:          3284
+        Length:          1
+        ReplacementText: ''
+      - FilePath:        './scheduler.hpp'
+        Offset:          3319
+        Length:          1
+        ReplacementText: ''
+  - DiagnosticName:  readability-simplify-boolean-expr
+    Message:         redundant boolean literal in conditional return statement
+    FileOffset:      240
+    FilePath:        scheduler.cpp
+    Replacements:    
+      - FilePath:        scheduler.cpp
+        Offset:          189
+        Length:          93
+        ReplacementText: 'return end_time_ < right.start_time();'
+  - DiagnosticName:  readability-else-after-return
+    Message:         'do not use ''else'' after ''return'''
+    FileOffset:      252
+    FilePath:        scheduler.cpp
+    Notes:           
+      - Message:         this fix will not be applied because it overlaps with another fix
+        FilePath:        ''
+        FileOffset:      0
+    Replacements:    []
+  - DiagnosticName:  readability-simplify-boolean-expr
+    Message:         redundant boolean literal in conditional return statement
+    FileOffset:      396
+    FilePath:        scheduler.cpp
+    Replacements:    
+      - FilePath:        scheduler.cpp
+        Offset:          345
+        Length:          93
+        ReplacementText: 'return start_time_ > right.end_time();'
+  - DiagnosticName:  readability-else-after-return
+    Message:         'do not use ''else'' after ''return'''
+    FileOffset:      408
+    FilePath:        scheduler.cpp
+    Notes:           
+      - Message:         this fix will not be applied because it overlaps with another fix
+        FilePath:        ''
+        FileOffset:      0
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      489
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      553
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      597
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      663
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      691
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      746
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '10 is a magic number; consider replacing it with a named constant'
+    FileOffset:      752
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      810
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      854
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      913
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      942
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      997
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1061
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1105
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1164
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1236
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  readability-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1260
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1324
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1368
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1434
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1542
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1586
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1645
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1673
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1785
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1818
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      2063
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      2114
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  readability-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      2187
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      2246
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      2490
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      2541
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      2614
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      2663
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  readability-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      2711
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '10 is a magic number; consider replacing it with a named constant'
+    FileOffset:      2717
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  readability-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      2955
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      3006
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      3072
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      3122
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      3170
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      3414
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      3465
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      3531
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      3799
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      3850
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      3916
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      3965
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''course_name'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      4859
+    FilePath:        scheduler.cpp
+    Replacements:    
+      - FilePath:        scheduler.cpp
+        Offset:          78
+        Length:          0
+        ReplacementText: '#include <utility>
+'
+      - FilePath:        scheduler.cpp
+        Offset:          4859
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        scheduler.cpp
+        Offset:          4870
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''course_location'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      4918
+    FilePath:        scheduler.cpp
+    Replacements:    
+      - FilePath:        scheduler.cpp
+        Offset:          4918
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        scheduler.cpp
+        Offset:          4933
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''day'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      4988
+    FilePath:        scheduler.cpp
+    Replacements:    
+      - FilePath:        scheduler.cpp
+        Offset:          4988
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        scheduler.cpp
+        Offset:          4991
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'the parameter ''file_name'' is copied for each invocation but only used as a const reference; consider making it a const reference'
+    FileOffset:      5564
+    FilePath:        scheduler.cpp
+    Replacements:    
+      - FilePath:        scheduler.cpp
+        Offset:          5552
+        Length:          0
+        ReplacementText: 'const '
+      - FilePath:        scheduler.cpp
+        Offset:          5563
+        Length:          0
+        ReplacementText: '&'
+      - FilePath:        './scheduler.hpp'
+        Offset:          3054
+        Length:          0
+        ReplacementText: 'const '
+      - FilePath:        './scheduler.hpp'
+        Offset:          3065
+        Length:          0
+        ReplacementText: '&'
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '10 is a magic number; consider replacing it with a named constant'
+    FileOffset:      7972
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '10 is a magic number; consider replacing it with a named constant'
+    FileOffset:      8623
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '10 is a magic number; consider replacing it with a named constant'
+    FileOffset:      9052
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '10 is a magic number; consider replacing it with a named constant'
+    FileOffset:      9249
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  clang-analyzer-core.UndefinedBinaryOperatorResult
+    Message:         'The left operand of ''*'' is a garbage value'
+    FileOffset:      9410
+    FilePath:        scheduler.cpp
+    Notes:           
+      - Message:         'Calling ''ScheduleManager::load_schedule'''
+        FilePath:        scheduler.cpp
+        FileOffset:      10004
+      - Message:         '''start_hour'' declared without an initial value'
+        FilePath:        scheduler.cpp
+        FileOffset:      5812
+      - Message:         Taking false branch
+        FilePath:        scheduler.cpp
+        FileOffset:      5979
+      - Message:         'Left side of ''&&'' is true'
+        FilePath:        scheduler.cpp
+        FileOffset:      6120
+      - Message:         Loop condition is true.  Entering loop body
+        FilePath:        scheduler.cpp
+        FileOffset:      6113
+      - Message:         Assuming the condition is true
+        FilePath:        scheduler.cpp
+        FileOffset:      6420
+      - Message:         Taking true branch
+        FilePath:        scheduler.cpp
+        FileOffset:      6416
+      - Message:         'The left operand of ''*'' is a garbage value'
+        FilePath:        scheduler.cpp
+        FileOffset:      9410
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      9412
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  clang-analyzer-core.UndefinedBinaryOperatorResult
+    Message:         'The left operand of ''*'' is a garbage value'
+    FileOffset:      9460
+    FilePath:        scheduler.cpp
+    Notes:           
+      - Message:         'Calling ''ScheduleManager::load_schedule'''
+        FilePath:        scheduler.cpp
+        FileOffset:      10004
+      - Message:         '''end_hour'' declared without an initial value'
+        FilePath:        scheduler.cpp
+        FileOffset:      5850
+      - Message:         Taking false branch
+        FilePath:        scheduler.cpp
+        FileOffset:      5979
+      - Message:         'Left side of ''&&'' is true'
+        FilePath:        scheduler.cpp
+        FileOffset:      6120
+      - Message:         Loop condition is true.  Entering loop body
+        FilePath:        scheduler.cpp
+        FileOffset:      6113
+      - Message:         Assuming the condition is false
+        FilePath:        scheduler.cpp
+        FileOffset:      6420
+      - Message:         Taking false branch
+        FilePath:        scheduler.cpp
+        FileOffset:      6416
+      - Message:         Taking false branch
+        FilePath:        scheduler.cpp
+        FileOffset:      6560
+      - Message:         Assuming the condition is false
+        FilePath:        scheduler.cpp
+        FileOffset:      6713
+      - Message:         Taking false branch
+        FilePath:        scheduler.cpp
+        FileOffset:      6709
+      - Message:         Taking false branch
+        FilePath:        scheduler.cpp
+        FileOffset:      6847
+      - Message:         'Left side of ''&&'' is true'
+        FilePath:        scheduler.cpp
+        FileOffset:      7010
+      - Message:         'Left side of ''&&'' is true'
+        FilePath:        scheduler.cpp
+        FileOffset:      7010
+      - Message:         'Left side of ''&&'' is true'
+        FilePath:        scheduler.cpp
+        FileOffset:      7010
+      - Message:         'Left side of ''&&'' is true'
+        FilePath:        scheduler.cpp
+        FileOffset:      7010
+      - Message:         'Left side of ''&&'' is false'
+        FilePath:        scheduler.cpp
+        FileOffset:      7132
+      - Message:         Taking true branch
+        FilePath:        scheduler.cpp
+        FileOffset:      7520
+      - Message:         'The left operand of ''*'' is a garbage value'
+        FilePath:        scheduler.cpp
+        FileOffset:      9460
+    Replacements:    []
+  - DiagnosticName:  cppcoreguidelines-avoid-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      9462
+    FilePath:        scheduler.cpp
+    Replacements:    []
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''file_name'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      10018
+    FilePath:        scheduler.cpp
+    Replacements:    
+      - FilePath:        scheduler.cpp
+        Offset:          10018
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        scheduler.cpp
+        Offset:          10027
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  readability-else-after-return
+    Message:         'do not use ''else'' after ''return'''
+    FileOffset:      10075
+    FilePath:        scheduler.cpp
+    Replacements:    
+      - FilePath:        scheduler.cpp
+        Offset:          10075
+        Length:          4
+        ReplacementText: ''
+      - FilePath:        scheduler.cpp
+        Offset:          10082
+        Length:          1
+        ReplacementText: ''
+      - FilePath:        scheduler.cpp
+        Offset:          10843
+        Length:          1
+        ReplacementText: ''
+  - DiagnosticName:  cppcoreguidelines-non-private-member-variables-in-classes
+    Message:         'member variable ''start_time_'' has protected visibility'
+    FileOffset:      112
+    FilePath:        scheduler.hpp
+    Replacements:    []
+  - DiagnosticName:  misc-non-private-member-variables-in-classes
+    Message:         'member variable ''end_time_'' has protected visibility'
+    FileOffset:      131
+    FilePath:        scheduler.hpp
+    Replacements:    []
+  - DiagnosticName:  misc-non-private-member-variables-in-classes
+    Message:         'member variable ''course_name_'' has protected visibility'
+    FileOffset:      725
+    FilePath:        scheduler.hpp
+    Replacements:    []
+  - DiagnosticName:  misc-non-private-member-variables-in-classes
+    Message:         'member variable ''location_'' has protected visibility'
+    FileOffset:      753
+    FilePath:        scheduler.hpp
+    Replacements:    []
+  - DiagnosticName:  misc-non-private-member-variables-in-classes
+    Message:         'member variable ''weekly_schedule_'' has protected visibility'
+    FileOffset:      778
+    FilePath:        scheduler.hpp
+    Replacements:    []
+  - DiagnosticName:  misc-non-private-member-variables-in-classes
+    Message:         'member variable ''time_'' has protected visibility'
+    FileOffset:      808
+    FilePath:        scheduler.hpp
+    Replacements:    []
+  - DiagnosticName:  misc-non-private-member-variables-in-classes
+    Message:         'member variable ''start_hour_'' has protected visibility'
+    FileOffset:      821
+    FilePath:        scheduler.hpp
+    Replacements:    []
+  - DiagnosticName:  misc-non-private-member-variables-in-classes
+    Message:         'member variable ''start_minute_'' has protected visibility'
+    FileOffset:      840
+    FilePath:        scheduler.hpp
+    Replacements:    []
+  - DiagnosticName:  misc-non-private-member-variables-in-classes
+    Message:         'member variable ''end_hour_'' has protected visibility'
+    FileOffset:      861
+    FilePath:        scheduler.hpp
+    Replacements:    []
+  - DiagnosticName:  misc-non-private-member-variables-in-classes
+    Message:         'member variable ''end_minute_'' has protected visibility'
+    FileOffset:      878
+    FilePath:        scheduler.hpp
+    Replacements:    []
+  - DiagnosticName:  readability-redundant-member-init
+    Message:         'initializer for member ''time_'' is redundant'
+    FileOffset:      974
+    FilePath:        scheduler.hpp
+    Replacements:    
+      - FilePath:        scheduler.hpp
+        Offset:          974
+        Length:          17
+        ReplacementText: ''
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''course_name'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      1138
+    FilePath:        scheduler.hpp
+    Replacements:    
+      - FilePath:        scheduler.hpp
+        Offset:          39
+        Length:          0
+        ReplacementText: '#include <utility>
+'
+      - FilePath:        scheduler.hpp
+        Offset:          1138
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        scheduler.hpp
+        Offset:          1149
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''location'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      1167
+    FilePath:        scheduler.hpp
+    Replacements:    
+      - FilePath:        scheduler.hpp
+        Offset:          1167
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        scheduler.hpp
+        Offset:          1175
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''weekly_schedule'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      1200
+    FilePath:        scheduler.hpp
+    Replacements:    
+      - FilePath:        scheduler.hpp
+        Offset:          1200
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        scheduler.hpp
+        Offset:          1215
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''course_name'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      1309
+    FilePath:        scheduler.hpp
+    Replacements:    
+      - FilePath:        scheduler.hpp
+        Offset:          1309
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        scheduler.hpp
+        Offset:          1320
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''location'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      1380
+    FilePath:        scheduler.hpp
+    Replacements:    
+      - FilePath:        scheduler.hpp
+        Offset:          1380
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        scheduler.hpp
+        Offset:          1388
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  performance-unnecessary-value-param
+    Message:         'parameter ''weekly_schedule'' is passed by value and only copied once; consider moving it to avoid unnecessary copies'
+    FileOffset:      1475
+    FilePath:        scheduler.hpp
+    Replacements:    
+      - FilePath:        scheduler.hpp
+        Offset:          1475
+        Length:          0
+        ReplacementText: 'std::move('
+      - FilePath:        scheduler.hpp
+        Offset:          1490
+        Length:          0
+        ReplacementText: ')'
+  - DiagnosticName:  readability-magic-numbers
+    Message:         '100 is a magic number; consider replacing it with a named constant'
+    FileOffset:      1859
+    FilePath:        scheduler.hpp
+    Replacements:    []
+  - DiagnosticName:  readability-delete-null-pointer
+    Message:         '''if'' statement is unnecessary; deleting null pointer has no effect'
+    FileOffset:      3249
+    FilePath:        scheduler.hpp
+    Replacements:    
+      - FilePath:        scheduler.hpp
+        Offset:          3249
+        Length:          30
+        ReplacementText: ''
+      - FilePath:        scheduler.hpp
+        Offset:          3284
+        Length:          1
+        ReplacementText: ''
+      - FilePath:        scheduler.hpp
+        Offset:          3319
+        Length:          1
+        ReplacementText: ''
+...

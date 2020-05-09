@@ -4,7 +4,190 @@
 #include <algorithm>
 #include "scheduler.hpp"
 
-// Updated based on Milestone 5
+// Functions for TimeSpan
+bool TimeSpan::operator<(const TimeSpan & right) const
+{
+  if (end_time_ < right.start_time())
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+bool TimeSpan::operator>(const TimeSpan & right) const
+{
+  if (start_time_ > right.end_time())
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+void TimeSpan::display()
+{
+  if (start_time_ % 100 == 0)
+  {
+    std::cout << "Start time: " << (start_time_ / 100) << ":"
+              << (start_time_ % 100) << "0" << '\n'
+              << "End time: " << (end_time_ / 100) << ":" << (end_time_ % 100)
+              << '\n';
+  }
+  else if (end_time_ % 100 < 10)
+  {
+    std::cout << "Start time: " << (start_time_ / 100) << ":"
+              << (start_time_ % 100) << '\n'
+              << "End time: " << (end_time_ / 100) << ":0" << (end_time_ % 100)
+              << '\n';
+  }
+  else if (end_time_ % 100 == 0)
+  {
+    std::cout << "Start time: " << (start_time_ / 100) << ":"
+              << (start_time_ % 100) << '\n'
+              << "End time: " << (end_time_ / 100) << ":"
+              << "00" << '\n';
+  }
+  else if (start_time_ % 100 == 0 && end_time_ % 100 == 0)
+  {
+    std::cout << "Start time: " << (start_time_ / 100) << ":"
+              << (start_time_ % 100) << "0" << '\n'
+              << "End time: " << (end_time_ / 100) << ":"
+              << "00" << '\n';
+  }
+  else
+  {
+    std::cout << "Start time: " << (start_time_ / 100) << ":"
+              << (start_time_ % 100) << '\n'
+              << "End time: " << (end_time_ / 100) << ":" << (end_time_ % 100)
+              << '\n';
+  }
+}
+
+// Functions for Course
+void Course::display()
+{
+  if ((time_.start_time() % 100 == 0) && (time_.end_time() % 100 == 0))
+  {
+    std::cout << "Course name: " << course_name_ << '\n'
+              << "Location: " << location_ << '\n'
+              << "Weekly schedule: " << weekly_schedule_ << '\n'
+              << "Start time: " << (time_.start_time() / 100) << ":"
+              << (time_.start_time() % 100) << "0" << '\n'
+              << "End time: " << (time_.end_time() / 100) << ":00" << '\n';
+  }
+  else if (time_.start_time() % 100 == 0)
+  {
+    std::cout << "Course name: " << course_name_ << '\n'
+              << "Location: " << location_ << '\n'
+              << "Weekly schedule: " << weekly_schedule_ << '\n'
+              << "Start time: " << (time_.start_time() / 100) << ":"
+              << (time_.start_time() % 100) << "0" << '\n'
+              << "End time: " << (time_.end_time() / 100) << ":"
+              << (time_.end_time() % 100) << '\n';
+  }
+  else if (time_.end_time() % 100 < 10)
+  {
+    std::cout << "Course name: " << course_name_ << '\n'
+              << "Location: " << location_ << '\n'
+              << "Weekly schedule: " << weekly_schedule_ << '\n'
+              << "Start time: " << (time_.start_time() / 100) << ":"
+              << (time_.start_time() % 100) << '\n'
+              << "End time: " << (time_.end_time() / 100) << ":0"
+              << (time_.end_time() % 100) << '\n';
+  }
+  else if (time_.end_time() % 100 == 0)
+  {
+    std::cout << "Course name: " << course_name_ << '\n'
+              << "Location: " << location_ << '\n'
+              << "Weekly schedule: " << weekly_schedule_ << '\n'
+              << "Start time: " << (time_.start_time() / 100) << ":"
+              << (time_.start_time() % 100) << '\n'
+              << "End time: " << (time_.end_time() / 100) << ":00" << '\n';
+  }
+  else
+  {
+    std::cout << "Course name: " << course_name_ << '\n'
+              << "Location: " << location_ << '\n'
+              << "Weekly schedule: " << weekly_schedule_ << '\n'
+              << "Start time: " << (time_.start_time() / 100) << ":"
+              << (time_.start_time() % 100) << '\n'
+              << "End time: " << (time_.end_time() / 100) << ":"
+              << (time_.end_time() % 100) << '\n';
+  }
+}
+
+bool Course::intersects(Course * other) const
+{
+  bool overlap = false;
+
+  // check whether the two courses have a day in common
+  // e.g. MW course and W course have W in common
+  for (char ch1 : weekly_schedule_)
+  {
+    for (char ch2 : other->weekly_schedule())
+    {
+      if (ch1 == ch2)
+      {
+        overlap = true;
+        break;
+      }
+    }
+  }
+  // if the courses are have a day in common, check whether their times
+  // overlap
+  if (overlap)
+  {
+    if (time_ < other->time() || time_ > other->time())
+    {
+      overlap = false;
+    }
+  }
+  return overlap;
+}
+
+// Functions for CourseSchedule
+bool CourseSchedule::add(std::string course_name, std::string course_location,
+                         std::string day, int start_time, int end_time)
+{
+  bool valid = false;
+
+  courses_[num_courses_] = new Course;
+  (*(courses_ + num_courses_))->set_course_name(course_name);
+  (*(courses_ + num_courses_))->set_location(course_location);
+  (*(courses_ + num_courses_))->set_weekly_schedule(day);
+  (*(courses_ + num_courses_))->set_time(TimeSpan(start_time, end_time));
+  if (!remove_conflicts_ || !(has_conflict(*(courses_ + num_courses_))))
+  {
+    num_courses_++;
+    valid = true;
+  }
+  else
+  {
+    delete courses_[num_courses_];
+    courses_[num_courses_] = nullptr;
+    valid = false;
+  }
+  return valid;
+}
+
+void CourseSchedule::display()
+{
+  if ((*(courses_)) != nullptr)
+  {
+    for (int i = 0; i < num_courses_; i++)
+    {
+      ((*(courses_ + i)))->display();
+    }
+  }
+}
+
+// Functions for ScheduleManager
+
 bool ScheduleManager::load_schedule(std::string file_name)
 {
   // define variables
@@ -137,7 +320,6 @@ CourseSchedule * ScheduleManager::best_schedule(std::string file_name)
   else
   {
     int number_of_courses = complete_schedule_.num_courses();
-    ;
     Course * arr[number_of_courses];
     int track = 0;
     if (best_schedule_ != nullptr)

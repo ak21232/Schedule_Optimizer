@@ -19,67 +19,9 @@ public:
   void set_end_time(int end_time) { end_time_ = end_time; }
   int start_time() const { return start_time_; }
   int end_time() const { return end_time_; }
-  bool operator<(const TimeSpan & right) const
-  {
-    if (end_time_ < right.start_time())
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    };
-  }
-  bool operator>(const TimeSpan & right) const
-  {
-    if (start_time_ > right.end_time())
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    };
-  }
-
-  void display()
-  {
-    if (start_time_ % 100 == 0)
-    {
-      std::cout << "Start time: " << (start_time_ / 100) << ":"
-                << (start_time_ % 100) << "0" << '\n'
-                << "End time: " << (end_time_ / 100) << ":" << (end_time_ % 100)
-                << '\n';
-    }
-    else if (end_time_ % 100 < 10)
-    {
-      std::cout << "Start time: " << (start_time_ / 100) << ":"
-                << (start_time_ % 100) << '\n'
-                << "End time: " << (end_time_ / 100) << ":0"
-                << (end_time_ % 100) << '\n';
-    }
-    else if (end_time_ % 100 == 0)
-    {
-      std::cout << "Start time: " << (start_time_ / 100) << ":"
-                << (start_time_ % 100) << '\n'
-                << "End time: " << (end_time_ / 100) << ":"
-                << "00" << '\n';
-    }
-    else if (start_time_ % 100 == 0 && end_time_ % 100 == 0)
-    {
-      std::cout << "Start time: " << (start_time_ / 100) << ":"
-                << (start_time_ % 100) << "0" << '\n'
-                << "End time: " << (end_time_ / 100) << ":"
-                << "00" << '\n';
-    }
-    else
-    {
-      std::cout << "Start time: " << (start_time_ / 100) << ":"
-                << (start_time_ % 100) << '\n'
-                << "End time: " << (end_time_ / 100) << ":" << (end_time_ % 100)
-                << '\n';
-    }
-  }
+  bool operator<(const TimeSpan & right) const;
+  bool operator>(const TimeSpan & right) const;
+  void display();
 };
 
 // Updated class based on Milestone 5
@@ -123,89 +65,10 @@ public:
   std::string weekly_schedule() { return weekly_schedule_; }
 
   TimeSpan time() { return time_; }
-  void display()
-  {
-    if ((time_.start_time() % 100 == 0) && (time_.end_time() % 100 == 0))
-    {
-      std::cout << "Course name: " << course_name_ << '\n'
-                << "Location: " << location_ << '\n'
-                << "Weekly schedule: " << weekly_schedule_ << '\n'
-                << "Start time: " << (time_.start_time() / 100) << ":"
-                << (time_.start_time() % 100) << "0" << '\n'
-                << "End time: " << (time_.end_time() / 100) << ":00" << '\n';
-    }
-    else if (time_.start_time() % 100 == 0)
-    {
-      std::cout << "Course name: " << course_name_ << '\n'
-                << "Location: " << location_ << '\n'
-                << "Weekly schedule: " << weekly_schedule_ << '\n'
-                << "Start time: " << (time_.start_time() / 100) << ":"
-                << (time_.start_time() % 100) << "0" << '\n'
-                << "End time: " << (time_.end_time() / 100) << ":"
-                << (time_.end_time() % 100) << '\n';
-    }
-    else if (time_.end_time() % 100 < 10)
-    {
-      std::cout << "Course name: " << course_name_ << '\n'
-                << "Location: " << location_ << '\n'
-                << "Weekly schedule: " << weekly_schedule_ << '\n'
-                << "Start time: " << (time_.start_time() / 100) << ":"
-                << (time_.start_time() % 100) << '\n'
-                << "End time: " << (time_.end_time() / 100) << ":0"
-                << (time_.end_time() % 100) << '\n';
-    }
-    else if (time_.end_time() % 100 == 0)
-    {
-      std::cout << "Course name: " << course_name_ << '\n'
-                << "Location: " << location_ << '\n'
-                << "Weekly schedule: " << weekly_schedule_ << '\n'
-                << "Start time: " << (time_.start_time() / 100) << ":"
-                << (time_.start_time() % 100) << '\n'
-                << "End time: " << (time_.end_time() / 100) << ":00" << '\n';
-    }
-    else
-    {
-      std::cout << "Course name: " << course_name_ << '\n'
-                << "Location: " << location_ << '\n'
-                << "Weekly schedule: " << weekly_schedule_ << '\n'
-                << "Start time: " << (time_.start_time() / 100) << ":"
-                << (time_.start_time() % 100) << '\n'
-                << "End time: " << (time_.end_time() / 100) << ":"
-                << (time_.end_time() % 100) << '\n';
-    };
-  }
-
-  bool intersects(Course * other) const
-  {
-    bool overlap = false;
-
-    // check whether the two courses have a day in common
-    // e.g. MW course and W course have W in common
-    for (char ch1 : weekly_schedule_)
-    {
-      for (char ch2 : other->weekly_schedule())
-      {
-        if (ch1 == ch2)
-        {
-          overlap = true;
-          break;
-        }
-      }
-    }
-    // if the courses are have a day in common, check whether their times
-    // overlap
-    if (overlap)
-    {
-      if (time_ < other->time() || time_ > other->time())
-      {
-        overlap = false;
-      }
-    }
-    return overlap;
-  }
+  void display();
+  bool intersects(Course * other) const;
 };
 
-// Updated class based on Milestone 5
 class CourseSchedule
 {
 private:
@@ -233,28 +96,7 @@ public:
   CourseSchedule() : CourseSchedule(true) {}
   int num_courses() { return num_courses_; }
   bool add(std::string course_name, std::string course_location,
-           std::string day, int start_time, int end_time)
-  {
-    bool valid = false;
-
-    courses_[num_courses_] = new Course;
-    (*(courses_ + num_courses_))->set_course_name(course_name);
-    (*(courses_ + num_courses_))->set_location(course_location);
-    (*(courses_ + num_courses_))->set_weekly_schedule(day);
-    (*(courses_ + num_courses_))->set_time(TimeSpan(start_time, end_time));
-    if (!remove_conflicts_ || !(has_conflict(*(courses_ + num_courses_))))
-    {
-      num_courses_++;
-      valid = true;
-    }
-    else
-    {
-      delete courses_[num_courses_];
-      courses_[num_courses_] = nullptr;
-      valid = false;
-    }
-    return valid;
-  }
+           std::string day, int start_time, int end_time);
   bool add(Course * cptr)
   {
     bool check;
@@ -264,16 +106,7 @@ public:
     return check;
   }
   Course * course(int array_element) { return courses_[array_element]; }
-  void display()
-  {
-    if ((*(courses_)) != nullptr)
-    {
-      for (int i = 0; i < num_courses_; i++)
-      {
-        ((*(courses_ + i)))->display();
-      }
-    }
-  }
+  void display();
   ~CourseSchedule()
   {
     for (int i = 0; i < num_courses_; i++)
@@ -283,7 +116,6 @@ public:
   }
 };
 
-// Milestone 6 Schedule Manager
 class ScheduleManager
 {
 private:
